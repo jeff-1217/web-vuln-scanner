@@ -53,3 +53,7 @@ def results():
         result = {"message": "Scan is still in progress... Please refresh this page after a few seconds."}
 
     return render_template('index.html', result=result)
+    if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
