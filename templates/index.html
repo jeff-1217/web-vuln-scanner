@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Vulnerability Scanner</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Landing Banner -->
+  <section class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between py-16 px-6">
+      <div class="md:w-1/2 mb-10 md:mb-0">
+        <h1 class="text-4xl font-bold mb-4">Secure Your Web App</h1>
+        <p class="text-lg mb-6">Scan your websites for vulnerabilities, phishing risks, and more in one simple platform.</p>
+        <a href="#scan" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Start Scanning</a>
+      </div>
+      <div class="md:w-1/2">
+        <img src="/static/img1.webp" alt="Scanner UI" class="w-3/4 rounded-lg shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="max-w-7xl mx-auto py-20 px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <img src="/static/img2.webp" class="mx-auto mb-4" alt="Scan Icon">
+        <h3 class="text-xl font-semibold mb-2">Deep Scanning</h3>
+        <p>Identify SQLi, XSS, CSRF, and more using our advanced scanning engine.</p>
+      </div>
+      <div>
+        <img src="/static/img3.webp" class="mx-auto mb-4" alt="Protection Icon">
+        <h3 class="text-xl font-semibold mb-2">Phishing Detection</h3>
+        <p>Analyze URLs for phishing behavior and reputation using AI and threat intel.</p>
+      </div>
+      <div>
+        <img src="/static/img4.webp" class="mx-auto mb-4" alt="Dashboard Icon">
+        <h3 class="text-xl font-semibold mb-2">Clean Dashboards</h3>
+        <p>View scan results and analytics in a beautiful, intuitive interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scan Section -->
+  <section id="scan" class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8">Scan Your Website</h2>
+      <form action="/scan" method="POST" class="bg-white p-8 rounded-lg shadow-lg">
+        <label for="website-url" class="text-lg font-semibold mb-4 block">Enter Your Website URL</label>
+        <input type="url" id="website-url" name="website-url" placeholder="https://example.com" class="p-3 mb-6 border border-gray-300 rounded w-full" required />
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Start Scan</button>
+
+        <!-- Progress Bar -->
+        <div id="progress-container" class="mt-6 hidden">
+          <div class="w-full bg-gray-300 rounded">
+            <div id="progress-bar" class="bg-blue-600 text-white text-center p-1 rounded" style="width: 0%">0%</div>
+          </div>
+        </div>
+
+        <!-- Result Display -->
+        {% if result %}
+        {% if result.message %}
+          <div class="mt-6 bg-blue-100 text-blue-800 p-4 rounded shadow text-center">
+            {{ result.message }}
+            {% if result.link %}
+              <br><a href="{{ result.link }}" class="underline text-blue-700">View Results</a>
+            {% endif %}
+          </div>
+        {% elif result.error %}
+          <div class="mt-6 bg-red-100 text-red-800 p-4 rounded shadow text-center">
+            {{ result.error }}
+          </div>
+        {% elif result.ports %}
+          <!-- show detailed scan result -->
+          <h3 class="text-2xl font-semibold mt-8 text-center">Scan Results</h3>
+          <div class="relative bg-white rounded shadow p-4 border border-gray-200 mt-4">
+            <button onclick="copyResult()" class="absolute top-2 right-2 text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200 transition">Copy</button>
+            <div id="scan-result">
+              <p><strong>Scanned At:</strong> {{ result.timestamp }}</p>
+              <p><strong>Host:</strong> {{ result.hostname }} ({{ result.host }})</p>
+              <p><strong>Status:</strong> {{ result.state }}</p>
+              <h4 class="text-lg font-semibold mt-4 mb-2">Open Ports:</h4>
+              <ul class="list-disc list-inside text-sm">
+                {% for port in result.ports %}
+                  <li><span class="font-semibold">Port:</span> {{ port.port }} / {{ port.protocol }} - <span class="text-green-600">{{ port.state }}</span></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+      </form>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="max-w-7xl mx-auto py-20 px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">About Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="text-center md:text-left">
+        <p class="text-lg">We are a dedicated team of security experts focused on making the web safer. Our vulnerability scanner helps businesses identify and address critical web application security flaws.
+
+          By simulating real-world attack scenarios, our tool uncovers vulnerabilities before malicious actors can exploit them. We continuously update our scanner to stay ahead of emerging threats and evolving security standards. Our goal is to empower businesses with the insights they need to protect their digital assets, ensure compliance, and maintain customer trust.
+          
+          Whether you’re running a small web app or managing enterprise-level infrastructure, our solution scales with your needs and integrates seamlessly into your existing workflows.</p>
+      </div>
+      <div>
+        <img src="/static/aboutus.webp" alt="About Us" class="w-full rounded-lg shadow-md">
+      </div>
+    </div>
+  </section>
+  <!-- Graph Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-bold mb-6 text-center">Real-Time Insights</h2>
+      <img src="/static/img5.webp" alt="Graph Data" class="w-full rounded-md shadow-md">
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="bg-white text-center text-sm text-gray-500 py-6 border-t">
+    <div>
+      <a href="mailto:jefrincorreya@gmail.com" class="text-blue-600 hover:underline">Contact Us</a> | 
+      <a href="/privacy-policy" class="text-blue-600 hover:underline">Privacy Policy</a>
+    </div>
+    <div class="mt-4">&copy; 2025 Web Vulnerability Scanner@jefrincorreya. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      const progressContainer = document.getElementById('progress-container');
+
+      form.addEventListener('submit', function () {
+        progressContainer.classList.remove('hidden');
+        let progress = 0;
+        const progressBar = document.getElementById('progress-bar');
+        const interval = setInterval(() => {
+          if (progress < 100) {
+            progress += 10;
+            progressBar.style.width = progress + '%';
+            progressBar.innerText = progress + '%';
+          } else {
+            clearInterval(interval);
+          }
+        }, 300);
+      });
+    });
+
+    function copyResult() {
+      const resultText = document.getElementById('scan-result').innerText;
+      navigator.clipboard.writeText(resultText).then(() => {
+        alert('Scan results copied to clipboard!');
+      });
+    }
+
+    function downloadResult() {
+      const text = document.getElementById('scan-result').innerText;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'scan_result.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
