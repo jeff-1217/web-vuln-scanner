@@ -3,7 +3,7 @@ from scanner import run_nmap_scan
 from urllib.parse import urlparse, unquote
 import threading
 import re
-
+import os
 app = Flask(__name__)
 scan_results = {}
 
