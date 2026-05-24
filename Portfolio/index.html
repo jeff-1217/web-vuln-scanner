@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaquries.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">Jefrine Correya</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#Experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="hamburger-nav">
+        <div class="logo">Jefrine Correya</div>  
+        <div class="hamburger-menu">
+            <div class="hamburger-icon"onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#Experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="togglMenu()">Contact</a></li>  
+            </div>
+        </div>
+    </nav>
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/jeff pr.png" alt="Jefrine Correya profile picture">
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Hello,I'm</p>
+            <h1 class="title">Jefrine Correya</h1>
+            <p class="section__text__p2">SOC Analyst</p>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2"
+                onclick="location.href='https://pdf.ac/1b6LyS'"
+                >Resume
+                </button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">
+                    contact info
+                </button>
+            </div>
+            <div id="socials-container">
+                <img 
+                src="./assets/linkedin.png" 
+                alt="My Linkedin Profile"
+                class="icon" 
+                onclick="location.href='https://www.linkedin.com/in/jefrine-correya-772639335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'"/>
+                <img 
+                src="./assets/github.png" 
+                alt="My github Profile"
+                class="icon" 
+                onclick="location.href='https://github.com/jeff-1217'"/>
+            </div>
+        
+        </div>
+    </section>
+    <section id="about">
+        <p class="section__text__p1">Get to know more</p>
+        <h1 class="title ">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+            <img 
+            src="./assets/jeffu-modified.png" 
+            alt="profile picture"
+            class="pic 2"
+            />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+                <img 
+                src="./assets/experience.png" 
+                alt="Education icon "
+                class="icon"
+                />  
+                <h3>Experience</h3>
+                <p>2 months,Web Development</p>
+                <p>5 months,Cyber Security</p>
+                
+              </div>
+                <div class="details-container">
+                  <img 
+                  src="./assets/education.png" 
+                  alt="Education icon "
+                  class="icon"
+                  />  
+                  <h3>Education</h3>
+                  <p>BCA Bachelors Degree in Koshys College,Banglore <br/>CICAS cyber Security in Redteam Academy,Kochi,Kerala</p>
+                  
+                </div>
+            </div>
+            <div class="text-container">
+                <p>
+                    I'm Jefrine Correya, an aspiring Cybersecurity Analyst with a Bachelor's degree in Computer Applications from Bangalore North University. Currently,
+                     I’m a CICSA student at RedTeam Academy, gaining hands-on experience in Security Operations Center (SOC) workflows,  threat analysis, and incident response.
+                     I’ve developed real-world projects like a URL phishing detector and a web vulnerability scanner using Python, which helped me build a solid foundation in web application security and ethical hacking .
+                    I’m highly motivated, detail-oriented, and always eager to expand my knowledge in cybersecurity. I thrive in dynamic environments and enjoy solving complex problems that help secure digital systems and data.
+                </p>
+            </div>
+        </div>
+     </div>
+     <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow"
+     onclick="location.href='./#experience'"/>
+    </section>
+    <section id="Experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+        <div class="about-containers">
+        <div class="details-container">
+            <h2 class="Experience-sub-title"> Web Development</h2>
+            <div class="article-container">
+                <article>
+                   <img src="./assets/checkmark.png" alt="Experience icon"
+                   class="icon"
+                   /> 
+                   <div>
+                    <h3>HTML</h3>
+                    <P>intermediate</P>
+                   </div>
+                </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>CSS</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                 <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Javascript</h3>
+                     <P>Basic</P>
+                    </div>
+                 </article>
+                 <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>MySQL</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                 <article>
+                   <img src="./assets/checkmark.png" alt="Experience icon"
+                   class="icon"
+                   /> 
+                   <div>
+                    <h3>Python</h3>
+                    <P>intermediate</P>
+                   </div>
+                </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>PHP</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                 <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Javascript</h3>
+                     <P>Basic</P>
+                    </div>
+                 </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>C#</h3>
+                     <P>Basic</P>
+                    </div>
+                 </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Ruby</h3>
+                     <P>Basic</P>
+                    </div>
+                 </article>
+                
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="Experience-sub-title"> Cyber Security</h2>
+            <div class="article-container">
+                <article>
+                   <img src="./assets/checkmark.png" alt="Experience icon"
+                   class="icon"
+                   /> 
+                   <div>
+                    <h3>Nessus</h3>
+                    <P>intermediate</P>
+                   </div>
+                </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Vulnerablity Assessment</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                 <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Security Incident Response</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>API Testing</h3>
+                     <P>Intermediate</P>
+                    </div>
+                 </article>
+                <article>
+                   <img src="./assets/checkmark.png" alt="Experience icon"
+                   class="icon"
+                   /> 
+                   <div>
+                    <h3>SQL Injection</h3>
+                    <P>intermediate</P>
+                   </div>
+                </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Penetration Tester</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                 <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Elastic Stack</h3>
+                     <P>Experienced</P>
+                    </div>
+                 </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>Splunk</h3>
+                     <P>Advanced</P>
+                    </div>
+                 </article>
+                <article>
+                    <img src="./assets/checkmark.png" alt="Experience icon"
+                    class="icon"
+                    /> 
+                    <div>
+                     <h3>OWASP</h3>
+                     <P>Advanced</P>
+                    </div>
+                 </article> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <img 
+      src="./assets/arrow.png" 
+      alt="Arrow icon" 
+      class="icon arrow"
+     onclick="location.href='./#projects'"
+     />
+    </section>
+    <section id="projects">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="experience-details-container">
+           <div class="about-containers projects-grid">
+          <div class="details-container color-container">
+            <div class="artile-container">
+            <img 
+            src="./assets/project 1.png" 
+            alt="project 1" 
+            class="project-img"
+            />
+            </div>
+            <h2 class="experience-sub-title project-title">Student Leave Management System</h2>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217'"> 
+                    github
+                </button>
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217'"> 
+                    Live demo 
+                </button>
+            </div>
+        </div>
+        <div class="details-container color-container">
+            <div class="artile-container">
+            <img 
+            src="./assets/project-2.png" 
+            alt="project 2" 
+            class="project-img"
+            />
+            </div>
+            <h2 class="experience-sub-title project-title">Netflix Clone</h2>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217/Netflix-clone'"> 
+                    github
+                </button>
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://nxcl.netlify.app'"> 
+                    Live demo 
+                </button>
+            </div>
+        </div>
+        <div class="details-container color-container">
+            <div class="artile-container">
+            <img 
+            src="./assets/project 3.png" 
+            alt="project 3" 
+            class="project-img"
+            />
+            </div>
+            <h2 class="experience-sub-title project-title">URL phishing Detector</h2>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217/url-phishing-detector'"> 
+                    github
+                </button>
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://url-phishing-detector2.vercel.app'"> 
+                    Live demo 
+                </button>
+            </div>
+        </div>
+        <div class="details-container color-container">
+            <div class="artile-container">
+            <img 
+            src="./assets/psc.webp" 
+            alt="project 3" 
+            class="project-img"
+            />
+            </div>
+            <h2 class="experience-sub-title project-title">Password Strenten Detector</h2>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217/password_strength_checker'"> 
+                    github
+                </button>
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://password-strength-checker-alpha.vercel.app/'"> 
+                    Live demo 
+                </button>
+            </div>
+     </div>
+     <div class="details-container color-container">
+        <div class="artile-container">
+        <img 
+        src="./assets/project4.webp" 
+        alt="project 3" 
+        class="project-img"
+        />
+        </div>
+        <h2 class="experience-sub-title project-title">Web Vulnerability Scanner</h2>
+        <div class="btn-container">
+            <button 
+            class="btn btn-color-2 projects-btn" 
+            onclick="location.href='https://github.com/jeff-1217/web-vuln-scanner'"> 
+                github
+            </button>
+            <button 
+            class="btn btn-color-2 projects-btn" 
+            onclick="location.href='https://web-vuln-scanner-cyan.vercel.app'"> 
+                Live demo 
+            </button>
+        </div>
+     </div>
+        <div class="details-container color-container">
+            <div class="artile-container">
+            <img 
+            src="./assets/aimonitor.webp" 
+            alt="project 3" 
+            class="project-img"
+            />
+            </div>
+            <h2 class="experience-sub-title project-title">In Progress</h2>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217?tab=repositories'"> 
+                    github
+                </button>
+                <button 
+                class="btn btn-color-2 projects-btn" 
+                onclick="location.href='https://github.com/jeff-1217?tab=repositories'"> 
+                    Live demo 
+                </button>
+            </div>
+        </div>
+    </div>
+     
+     <img 
+      src="./assets/arrow.png" 
+      alt="Arrow icon" 
+      class="icon arrow"
+      onclick="location.href='./#projects'"
+            />
+    </section>
+    <section id="contact">
+    <p class="section__text__p1">Get in Touch</p>
+    <h1 class="title">Contact Me</h1>  
+    <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+            <img src="./assets/email.png"
+             alt="Email icon" 
+             class="icon contact-icon"
+            />
+            <p><a href="mailto:jefrincorreya@gmail.com">jefrincorreya@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+            <img src="./assets/linkedin.png"
+             alt="LinkedIn icon" 
+             class="icon contact-icon"
+            />
+            <p><a href="https://www.linkedin.com/in/jefrine-correya-772639335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
+        </div>
+    </div>  
+    </section>
+    <footer>
+        <nav>
+        <div class="nav-links-container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#Experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+        <p>copyright &#169; 2025 Jefrine Correya.All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>  
+ </body>
+</html>

@@ -16,30 +16,29 @@ st.set_page_config(page_title="SOC Threat Agent", layout="wide")
 st.markdown("""
 <style>
 .metric-card {
-    background: rgba(30, 30, 46, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--secondary-background-color) !important;
+    border: 1px solid rgba(128, 128, 128, 0.1) !important;
     padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #00E676;
+    border-left: 5px solid #00E676 !important;
     margin-bottom: 20px;
-    color: white;
+    color: var(--text-color) !important;
 }
 .metric-card.malicious {
-    border-left: 5px solid #FF5252;
+    border-left: 5px solid #FF5252 !important;
 }
-.metric-card h3 { margin-top: 0; color: #E0E0E0; }
+.metric-card h3 { margin-top: 0; color: var(--text-color) !important; }
 .metric-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-.metric-label { color: #A0A0A0; font-weight: bold; width: 30%; }
-.metric-value { color: #FFFFFF; width: 70%; }
+.metric-label { opacity: 0.7; font-weight: bold; width: 30%; color: var(--text-color) !important; }
+.metric-value { width: 70%; color: var(--text-color) !important; }
 
 .tip-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    background-color: var(--secondary-background-color) !important;
+    border: 1px dashed rgba(128, 128, 128, 0.3) !important;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
-    color: #E0E0E0;
+    color: var(--text-color) !important;
     font-size: 0.95rem;
 }
 
@@ -62,14 +61,14 @@ st.markdown("""
 }
 /* Secondary buttons (Load Demo, Clear Log) */
 .stButton>button[kind="secondary"] {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #E0E0E0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(128, 128, 128, 0.2) !important;
 }
 .stButton>button[kind="secondary"]:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #FFFFFF !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    background-color: rgba(128, 128, 128, 0.15) !important;
+    color: var(--text-color) !important;
+    border-color: rgba(128, 128, 128, 0.4) !important;
     transform: translateY(-1px) !important;
 }
 </style>
