@@ -12,11 +12,13 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 st.set_page_config(page_title="SOC Threat Agent", layout="wide")
 
-# Custom CSS for the cards
+# Custom CSS for the cards and UI elements
 st.markdown("""
 <style>
 .metric-card {
-    background-color: #1E1E2E;
+    background: rgba(30, 30, 46, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px;
     border-radius: 10px;
     border-left: 5px solid #00E676;
@@ -30,14 +32,82 @@ st.markdown("""
 .metric-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .metric-label { color: #A0A0A0; font-weight: bold; width: 30%; }
 .metric-value { color: #FFFFFF; width: 70%; }
+
+.tip-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #E0E0E0;
+    font-size: 0.95rem;
+}
+
+/* Style all buttons */
+.stButton>button {
+    border-radius: 8px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+/* Primary button (Analyze Logs) */
+.stButton>button[kind="primary"] {
+    background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%) !important;
+    color: #0F0F1A !important;
+    border: none !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3) !important;
+}
+.stButton>button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5) !important;
+}
+/* Secondary buttons (Load Demo, Clear Log) */
+.stButton>button[kind="secondary"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #E0E0E0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.stButton>button[kind="secondary"]:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
 st.title("SOC Threat Detection Agent")
 st.markdown("This tool analyzes firewall logs in real-time, queries threat intelligence databases (AbuseIPDB, VirusTotal), and uses the **Groq Llama-3.3-70b** model to summarize findings and recommend actions.")
 
+# Demo section
+st.markdown("""
+<div class="tip-card">
+    💡 <b>Tip:</b> Don't have a log handy? Click <b>Load Demo Log</b> to insert a sample log with a known malicious IP (<code>174.138.38.186</code> - flagged by AbuseIPDB) to test the threat detection flow.
+</div>
+""", unsafe_allow_html=True)
+
+# Initialize session state for log input if not already present
+if "log_data" not in st.session_state:
+    st.session_state.log_data = ""
+
+def load_demo():
+    st.session_state.log_data = "May 24 15:12:45 gateway-firewall: Connection from 174.138.38.186 rejected on port 22 (SSH)"
+
+def clear_log():
+    st.session_state.log_data = ""
+
+col1, col2, _ = st.columns([2, 2, 8])
+with col1:
+    st.button("Load Demo Log ", on_click=load_demo, use_container_width=True)
+with col2:
+    st.button("Clear Log ", on_click=clear_log, use_container_width=True)
+
 # Log input
-log_input = st.text_area("Paste your firewall logs here:", height=200, placeholder="Jan 01 12:35:25 firewall: HTTP connection from 45.33.32.156 accepted...")
+log_input = st.text_area(
+    "Paste your firewall logs here:",
+    key="log_data",
+    height=200,
+    placeholder="Jan 01 12:35:25 firewall: HTTP connection from 45.33.32.156 accepted..."
+)
 
 def extract_ips(log_data: str) -> list:
     return list(set(re.findall(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', log_data)))
